@@ -1,5 +1,6 @@
 package com.simulator.loan.domain.services;
 
+import com.simulator.loan.domain.dto.request.LoanSimulatorRequestDTO;
 import com.simulator.loan.domain.dto.response.LoanSimulatorResponseDTO;
 import com.simulator.loan.domain.services.interfaces.LoanSimulationServiceInterface;
 import lombok.RequiredArgsConstructor;
@@ -16,14 +17,16 @@ import java.time.Period;
 @RequiredArgsConstructor
 public class LoanSimulationService implements LoanSimulationServiceInterface {
     @Override
-    public LoanSimulatorResponseDTO getSimulator(BigDecimal valorEmprestimo, LocalDate dataNascimento, Integer qtdMeses) {
+    public LoanSimulatorResponseDTO getSimulator(LoanSimulatorRequestDTO request) {
         try{
-            //lalalala
-            var idade = Period.between(dataNascimento, LocalDate.now()).getYears(); // transformando data de nascimento em idade
+            var idade = Period.between(request.getBirthDate(), LocalDate.now()).getYears(); // transformando data de nascimento em idade
             var taxaJurosAno = calculoJurosAno(idade); // calculando a taxa de juros ao ano
             RoundingMode arr = RoundingMode.HALF_UP; // arredonda para cima se o valor estiver no meio
 
             BigDecimal taxaJurosMensal = taxaJurosAno.divide(BigDecimal.valueOf(12), 4, arr); // calculando juros mensal
+
+            var valorEmprestimo = request.getAmount();
+            var qtdMeses = request.getMonths();
 
             BigDecimal parcelaFixaMensal = calculoParcelaFixa(valorEmprestimo, taxaJurosMensal, qtdMeses);
             BigDecimal valorTotalAPagar = parcelaFixaMensal.multiply(BigDecimal.valueOf(qtdMeses));
@@ -64,6 +67,5 @@ public class LoanSimulationService implements LoanSimulationServiceInterface {
 
         return dividendo.divide(divisorTotal, 2, arr);
     }
-
 
 }

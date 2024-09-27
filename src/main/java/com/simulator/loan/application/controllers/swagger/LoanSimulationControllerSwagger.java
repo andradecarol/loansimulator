@@ -1,5 +1,6 @@
 package com.simulator.loan.application.controllers.swagger;
 
+import com.simulator.loan.domain.dto.request.LoanSimulatorRequestDTO;
 import com.simulator.loan.domain.dto.response.LoanSimulatorResponseDTO;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -15,10 +16,7 @@ import jakarta.validation.constraints.Min;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -40,10 +38,7 @@ public interface LoanSimulationControllerSwagger {
             @ApiResponse(responseCode = "503", description = "Service Unavailable - O servidor não está disponível no momento."),
             @ApiResponse(responseCode = "504", description = "Gateway Timeout - A solicitação não pôde ser concluída.")
     })
-    @GetMapping
+    @PostMapping
     ResponseEntity<LoanSimulatorResponseDTO> getSimulator(
-            @RequestParam BigDecimal amount,
-            @RequestParam @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate birthDate,
-            @RequestParam Integer months
-    );
+            @RequestBody LoanSimulatorRequestDTO request);
 }

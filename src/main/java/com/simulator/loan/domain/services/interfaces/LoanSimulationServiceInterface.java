@@ -8,6 +8,6 @@ import java.time.LocalDate;
 
 public interface LoanSimulationServiceInterface {
 
-    LoanSimulatorResponseDTO getSimulator(BigDecimal amount, LocalDate birthDate, Integer months);
+    LoanSimulatorResponseDTO getSimulator(LoanSimulatorRequestDTO request);
 
 }

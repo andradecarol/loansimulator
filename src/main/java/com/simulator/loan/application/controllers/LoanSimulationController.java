@@ -1,6 +1,7 @@
 package com.simulator.loan.application.controllers;
 
 import com.simulator.loan.application.controllers.swagger.LoanSimulationControllerSwagger;
+import com.simulator.loan.domain.dto.request.LoanSimulatorRequestDTO;
 import com.simulator.loan.domain.dto.response.LoanSimulatorResponseDTO;
 import com.simulator.loan.domain.services.LoanSimulationService;
 import com.simulator.loan.domain.services.interfaces.LoanSimulationServiceInterface;
@@ -21,8 +22,8 @@ public class LoanSimulationController implements LoanSimulationControllerSwagger
     private final LoanSimulationServiceInterface service;
 
     @Override
-    public ResponseEntity<LoanSimulatorResponseDTO> getSimulator(BigDecimal amount, LocalDate birthDate, Integer months) {
-        LoanSimulatorResponseDTO response = service.getSimulator(amount, birthDate, months);
+    public ResponseEntity<LoanSimulatorResponseDTO> getSimulator(LoanSimulatorRequestDTO request) {
+        LoanSimulatorResponseDTO response = service.getSimulator(request);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
