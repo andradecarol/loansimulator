@@ -1,4 +1,4 @@
-package com.simulator.loan.config;
+package com.simulator.loan.config.application;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

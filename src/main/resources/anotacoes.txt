@@ -1,0 +1,4 @@
+- Verificar request do swagger
+- Verificar mensagens de exceção
+- ANotações @NotNull sem mensagens
+- Fazer o README
