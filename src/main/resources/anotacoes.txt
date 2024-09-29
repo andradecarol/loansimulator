@@ -1,4 +1,4 @@
 - Verificar request do swagger
-- Verificar mensagens de exceção
-- ANotações @NotNull sem mensagens
-- Fazer o README
+- Rever o README
+- Números passando como string e como double
+- Verificar os cenários de erro no teste unitário da service
