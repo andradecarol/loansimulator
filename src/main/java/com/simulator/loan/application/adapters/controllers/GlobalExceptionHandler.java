@@ -1,4 +1,4 @@
-package com.simulator.loan.application.controllers;
+package com.simulator.loan.application.adapters.controllers;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;

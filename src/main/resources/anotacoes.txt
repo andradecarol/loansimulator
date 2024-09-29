@@ -1,4 +1,6 @@
-- Verificar request do swagger
-- Rever o README
+- Verificar request do swagger OK
+- Docker OK
 - Números passando como string e como double
 - Verificar os cenários de erro no teste unitário da service
+
+- Rever o README

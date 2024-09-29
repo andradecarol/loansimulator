@@ -6,7 +6,7 @@ import com.simulator.loan.domain.dto.response.LoanSimulatorResponseDTO;
 import com.simulator.loan.domain.exceptions.InternalServerErrorException;
 import com.simulator.loan.domain.exceptions.MessageErrorCodeConstants;
 import com.simulator.loan.domain.exceptions.UnprocessableEntityException;
-import com.simulator.loan.domain.services.interfaces.LoanSimulationServiceInterface;
+import com.simulator.loan.ports.LoanSimulationServicePort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.INT
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class LoanSimulationService implements LoanSimulationServiceInterface {
+public class LoanSimulationService implements LoanSimulationServicePort {
 
     private final MessageConfig messageConfig;
 

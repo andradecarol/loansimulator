@@ -1,9 +1,9 @@
-package com.simulator.loan.application.controllers;
+package com.simulator.loan.application.adapters.controllers;
 
-import com.simulator.loan.application.controllers.swagger.LoanSimulationControllerSwagger;
+import com.simulator.loan.application.adapters.controllers.swagger.LoanSimulationControllerSwagger;
 import com.simulator.loan.domain.dto.request.LoanSimulatorRequestDTO;
 import com.simulator.loan.domain.dto.response.LoanSimulatorResponseDTO;
-import com.simulator.loan.domain.services.interfaces.LoanSimulationServiceInterface;
+import com.simulator.loan.ports.LoanSimulationServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoanSimulationController implements LoanSimulationControllerSwagger {
 
-    private final LoanSimulationServiceInterface service;
+    private final LoanSimulationServicePort service;
 
     @Override
     public ResponseEntity<LoanSimulatorResponseDTO> getSimulator(LoanSimulatorRequestDTO request) {

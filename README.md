@@ -36,10 +36,10 @@ Esse microsserviço foi estruturado baseado em uma [arquitetura hexagonal](<http
 
 ```
   /src/main/java/com.simulator.loan
-    /adapters
-    /application
-        /controllers
-            /swagger
+     /application
+        /adapters   
+            /controllers
+                /swagger
     /config
     /domain
         /dto

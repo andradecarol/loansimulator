@@ -1,27 +1,22 @@
-package com.simulator.loan.application.controllers;
+package com.simulator.loan.application.adapters.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.simulator.loan.domain.dto.request.LoanSimulatorRequestDTO;
-import com.simulator.loan.domain.dto.response.LoanSimulatorResponseDTO;
-import com.simulator.loan.domain.services.interfaces.LoanSimulationServiceInterface;
+import com.simulator.loan.ports.LoanSimulationServicePort;
 import com.simulator.loan.mock.LoanSimulatorMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.math.BigDecimal;
-
-import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.any;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(LoanSimulationController.class)
 public class LoanSimulationControllerTest {
@@ -30,7 +25,7 @@ public class LoanSimulationControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private LoanSimulationServiceInterface service;
+    private LoanSimulationServicePort service;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -51,7 +46,7 @@ public class LoanSimulationControllerTest {
     }
 
     @Test
-    public void shouldReturnAcceptedWhenValidRequest() throws Exception {
+    void shouldReturnAcceptedWhenValidRequest() throws Exception {
         var mockResponse = LoanSimulatorMock.getResponseSimulatorAge26To40();
         mockMvc.perform(post("/simulator")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -63,7 +58,7 @@ public class LoanSimulationControllerTest {
     }
 
     @Test
-    public void shoultReturnBadRequestWhenInvalidRequest() throws Exception {
+    void shoultReturnBadRequestWhenInvalidRequest() throws Exception {
         LoanSimulatorRequestDTO invalidRequest = new LoanSimulatorRequestDTO();
 
         mockMvc.perform(post("/simulator")
@@ -73,7 +68,7 @@ public class LoanSimulationControllerTest {
     }
 
     @Test
-    public void shoultReturnBadRequestWhenFutureBirthDate() throws Exception {
+    void shoultReturnBadRequestWhenFutureBirthDate() throws Exception {
         LoanSimulatorRequestDTO request = LoanSimulatorMock.getRequestSimulatorInvalidBirthDate();
 
         mockMvc.perform(post("/simulator")

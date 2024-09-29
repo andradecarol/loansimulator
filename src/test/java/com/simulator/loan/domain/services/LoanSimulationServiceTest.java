@@ -38,7 +38,7 @@ public class LoanSimulationServiceTest {
     }
 
     @Test
-    public void shouldGetSimulatorSuccessfullyAge25OrLess() {
+    void shouldGetSimulatorSuccessfullyAge25OrLess() {
         //given
         LoanSimulatorRequestDTO request = LoanSimulatorMock.getRequestSimulatorAge25OrLess();
         LoanSimulatorResponseDTO mockResponse = LoanSimulatorMock.getResponseSimulatorAge25OrLess();
@@ -53,7 +53,7 @@ public class LoanSimulationServiceTest {
     }
 
     @Test
-    public void shouldGetSimulatorSuccessfullyAge26To40() {
+    void shouldGetSimulatorSuccessfullyAge26To40() {
         // given
         LoanSimulatorRequestDTO request = LoanSimulatorMock.getRequestSimulatorAge26To40();
         LoanSimulatorResponseDTO mockResponse = LoanSimulatorMock.getResponseSimulatorAge26To40();
@@ -68,7 +68,7 @@ public class LoanSimulationServiceTest {
     }
 
     @Test
-    public void shouldGetSimulatorSuccessfullyAge41To60() {
+    void shouldGetSimulatorSuccessfullyAge41To60() {
         // given
         LoanSimulatorRequestDTO request = LoanSimulatorMock.getRequestSimulatorAge41To60();
         LoanSimulatorResponseDTO mockResponse = LoanSimulatorMock.getResponseSimulatorAge41To60();
@@ -83,7 +83,7 @@ public class LoanSimulationServiceTest {
     }
 
     @Test
-    public void shouldGetSimulatorSuccessfullyAgeAbove60() {
+    void shouldGetSimulatorSuccessfullyAgeAbove60() {
         // given
         LoanSimulatorRequestDTO request = LoanSimulatorMock.getRequestSimulatorAgeAbove60();
         LoanSimulatorResponseDTO mockResponse = LoanSimulatorMock.getResponseSimulatorAgeAbove60();

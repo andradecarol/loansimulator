@@ -1,4 +1,4 @@
-package com.simulator.loan.application.controllers.swagger;
+package com.simulator.loan.application.adapters.controllers.swagger;
 
 import com.simulator.loan.domain.dto.request.LoanSimulatorRequestDTO;
 import com.simulator.loan.domain.dto.response.LoanSimulatorResponseDTO;
