@@ -27,7 +27,6 @@ public class LoanSimulatorRequestDTO {
     private BigDecimal amount;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-    //@Schema(description = "Data de nascimento no formato dd/MM/yyyy", example = "16/04/1991")
     @Past(message = FIELD_MUST_BE_DATE_IN_PAST)
     @NotNull(message = FIELD_NOT_BE_NULL)
     private LocalDate birthDate;

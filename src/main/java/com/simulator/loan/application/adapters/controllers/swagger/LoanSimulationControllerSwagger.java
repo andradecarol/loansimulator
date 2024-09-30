@@ -51,5 +51,4 @@ public interface LoanSimulationControllerSwagger {
     ResponseEntity<LoanSimulatorResponseDTO> getSimulator(
             @RequestBody @Valid LoanSimulatorRequestDTO request);
 
-    // http://localhost:8080/loan/v1/swagger-ui/index.html
 }

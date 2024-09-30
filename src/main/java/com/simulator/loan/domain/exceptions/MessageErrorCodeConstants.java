@@ -19,6 +19,7 @@ public class MessageErrorCodeConstants {
 
     //HTTP 422
     public static final String BUSINESS_ERROR = "422.000";
+    public static final String INVALID_AGE = "422.001";
 
     //HTTP 500
     public static final String INTERNAL_SERVER_ERROR = "500.000";

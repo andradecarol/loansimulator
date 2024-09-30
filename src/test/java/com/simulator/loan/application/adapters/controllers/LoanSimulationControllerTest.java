@@ -2,8 +2,8 @@ package com.simulator.loan.application.adapters.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.simulator.loan.domain.dto.request.LoanSimulatorRequestDTO;
-import com.simulator.loan.ports.LoanSimulationServicePort;
 import com.simulator.loan.mock.LoanSimulatorMock;
+import com.simulator.loan.ports.LoanSimulationServicePort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

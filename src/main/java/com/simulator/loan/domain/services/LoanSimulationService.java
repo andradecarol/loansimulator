@@ -4,7 +4,6 @@ import com.simulator.loan.config.application.MessageConfig;
 import com.simulator.loan.domain.dto.request.LoanSimulatorRequestDTO;
 import com.simulator.loan.domain.dto.response.LoanSimulatorResponseDTO;
 import com.simulator.loan.domain.exceptions.InternalServerErrorException;
-import com.simulator.loan.domain.exceptions.MessageErrorCodeConstants;
 import com.simulator.loan.domain.exceptions.UnprocessableEntityException;
 import com.simulator.loan.ports.LoanSimulationServicePort;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +16,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.INTERNAL_SERVER_ERROR;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.INVALID_AGE;
 
 @Slf4j
 @Service
@@ -51,10 +51,10 @@ public class LoanSimulationService implements LoanSimulationServicePort {
                     .valorTotalAPagar(valorTotalAPagar)
                     .build();
 
-        }catch (UnprocessableEntityException ex) {
-            log.error(messageConfig.getMessage(MessageErrorCodeConstants.BUSINESS_ERROR), ex.getMessage(), ex.toString());
+        } catch (UnprocessableEntityException ex) {
+            log.error(messageConfig.getMessage(INVALID_AGE), ex.getMessage(), ex.toString());
             throw ex;
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             log.error(messageConfig.getMessage(INTERNAL_SERVER_ERROR), ex.getMessage(), ex.toString());
             throw new InternalServerErrorException(INTERNAL_SERVER_ERROR, ex.getMessage());
         }
@@ -62,7 +62,9 @@ public class LoanSimulationService implements LoanSimulationServicePort {
 
     private BigDecimal calculoJurosAno(Integer age){
         log.info("Calculando taxa de juros conforme idade...");
-        if (age <= 25) {
+        if (age < 18){
+            throw new UnprocessableEntityException(INVALID_AGE, messageConfig.getMessage(INVALID_AGE));
+        }else if (age <= 25) {
             return BigDecimal.valueOf(0.05);
         } else if (age <= 40) {
             return BigDecimal.valueOf(0.03);

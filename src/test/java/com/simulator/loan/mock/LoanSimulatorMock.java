@@ -85,4 +85,21 @@ public class LoanSimulatorMock {
                 .months(10)
                 .build();
     }
+
+    public static LoanSimulatorRequestDTO getRequestSimulatorInvalidAge(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LoanSimulatorRequestDTO.builder()
+                .amount(BigDecimal.valueOf(1000))
+                .birthDate(LocalDate.parse("16/04/2009", formatter))
+                .months(10)
+                .build();
+    }
+
+    public static LoanSimulatorRequestDTO getIncompletedRequest(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LoanSimulatorRequestDTO.builder()
+                .amount(BigDecimal.valueOf(1000))
+                .birthDate(LocalDate.parse("16/04/1999", formatter))
+                .build();
+    }
 }
