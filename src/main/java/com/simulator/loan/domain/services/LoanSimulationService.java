@@ -32,7 +32,6 @@ public class LoanSimulationService implements LoanSimulationServicePort {
 
             var idade = Period.between(request.getBirthDate(), LocalDate.now()).getYears();
             var taxaJurosAno = calculoJurosAno(idade);
-            log.info("Taxa de juros calculada: {}", taxaJurosAno);
 
             RoundingMode arr = RoundingMode.HALF_UP;
 
@@ -76,6 +75,7 @@ public class LoanSimulationService implements LoanSimulationServicePort {
     }
 
     private BigDecimal calculoParcelaFixa(BigDecimal valorEmprestimo, BigDecimal taxaJurosMensal, Integer qtdMeses ){
+        log.info("Calculando parcela fixa...");
         RoundingMode arr = RoundingMode.HALF_UP;
 
         BigDecimal um = BigDecimal.ONE;
