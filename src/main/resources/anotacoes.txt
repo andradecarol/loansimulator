@@ -1,9 +1,0 @@
-- Verificar request do swagger OK
-- Docker OK
-- Números passando como string e como double OK
-- Verificar os cenários de erro no teste unitário da service OK
-
-- Tirar imports com *
-- Remover classes sem uso
-
-- Rever o README
