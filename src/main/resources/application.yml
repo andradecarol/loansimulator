@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: loan-simulator-ms
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /loan/v1
+
+logging:
+  level:
+    root: ${LOGGING_LEVEL_ROOT:INFO}
+    com:
+      api: ${LOGGING_LEVEL_LSA:TRACE}
+
+application:
+  settings:
+    max-result-per-query: ${MAX_RESULTS_PER_QUERY:100}
