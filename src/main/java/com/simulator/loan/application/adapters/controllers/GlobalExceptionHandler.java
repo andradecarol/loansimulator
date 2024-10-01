@@ -29,10 +29,18 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.*;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.ADDITIONAL_FIELDS_NOT_ALLOWED;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.FIELD_MUST_BE_VALID;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.FIELD_NOT_BE_NULL;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.INVALID_REQUEST;
 
 @Slf4j
 @RestControllerAdvice

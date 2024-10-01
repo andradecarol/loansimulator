@@ -2,7 +2,12 @@ package com.simulator.loan.domain.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +16,10 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.*;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.FIELD_MUST_BE_DATE_IN_PAST;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.FIELD_MUST_BE_POSITIVE;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.FIELD_MUST_BE_VALID;
+import static com.simulator.loan.domain.exceptions.MessageErrorCodeConstants.FIELD_NOT_BE_NULL;
 
 @AllArgsConstructor
 @NoArgsConstructor
